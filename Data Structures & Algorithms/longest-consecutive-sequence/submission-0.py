@@ -1,0 +1,12 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        numset = set(nums)
+        longest = 0
+
+        for n in nums:
+            if (n - 1) not in nums: #start of sequence
+                length = 0
+                while (n + length) in numset:
+                    length = length + 1 #add 1 to every consecutive valid number
+                longest = max(length, longest)
+        return longest
